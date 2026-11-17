@@ -218,6 +218,16 @@
   .milestones div { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: 20px; }
   .milestones b { font: 1.8rem var(--display); color: var(--blue-deep); display: block; }
 
+  .award-feature { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; margin-bottom: 56px; }
+  .award-feature .ph { aspect-ratio: 4/3; min-height: 0; }
+  .award-feature h2 { margin: 10px 0 8px; }
+  .award-feature p { color: var(--muted); }
+  .award-event { font-weight: 700; color: var(--ink) !important; margin-bottom: 10px; }
+  .award-year { display: inline-block; margin: 14px 4px 0; font-weight: 700; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-deep); }
+  .award-feature .award-year { margin: 0; }
+  .award-note { margin-top: 30px; font-size: .9rem; color: var(--muted); }
+  @media (max-width: 760px) { .award-feature { grid-template-columns: 1fr; } }
+
   /* gallery */
   .masonry { columns: 4 240px; column-gap: 16px; }
   .masonry .ph { break-inside: avoid; margin-bottom: 16px; min-height: 0; border-radius: 20px; cursor: zoom-in; }
@@ -236,7 +246,7 @@
   input:focus, select:focus, textarea:focus { outline: 3px solid var(--sky); border-color: var(--blue-deep); }
   .side-card { background: var(--sky-soft); border-radius: var(--radius); padding: 28px; display: grid; gap: 18px; align-content: start; }
   .side-card h3 { font-size: 1.3rem; }
-  .wa { background: #1A7F45; color: #fff; }
+  .wa { background: var(--blue-deep); color: #fff; } /* brand blue, not WhatsApp green */
   details { border-bottom: 1px solid var(--line); padding: 18px 0; }
   summary { font-weight: 700; font-size: 1.1rem; cursor: pointer; }
   details p { margin-top: 10px; color: var(--muted); }
@@ -251,20 +261,8 @@
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
 
-  /* ===== colour palettes (switch with the picker, bottom-right) ===== */
-  :root { --line: var(--line); --header: #fff; }
-  [data-theme="cream"] {
-    --white: #FFF8EE; --sky-soft: #FBEAD3; --sky: #F6DDBA; --cyan: #EBC39A;
-    --muted: #6A5848; --line: #F0DFC6; --header: #FFF8EE;
-  }
-  [data-theme="navy"] {
-    --blue: #0B2F57; --blue-deep: #0077C8; --sky-soft: #EDF4FA; --sky: #BFDDF2; --cyan: #00A2E5; --line: #DCE8F2;
-  }
-  .theme-pick { position: fixed; right: 12px; bottom: 12px; z-index: 1500; display: flex; align-items: center; gap: 6px; background: #fff; color: #0B2540; padding: 6px 8px 6px 14px; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,.18); font: 700 .8rem "Barlow", sans-serif; }
-  .theme-pick button { display: flex; align-items: center; gap: 6px; border: 2px solid transparent; background: none; border-radius: 999px; padding: 4px 10px 4px 4px; cursor: pointer; font: 600 .8rem "Barlow", sans-serif; color: #0B2540; }
-  .theme-pick button.on { border-color: #0B2540; }
-  .theme-pick i { width: 20px; height: 20px; border-radius: 50%; display: block; }
-  @media (max-width: 640px) { .theme-pick span, .theme-pick button b { display: none; } .theme-pick button { padding: 4px; } }
+  /* tokens used across the page */
+  :root { --line: #e3eef6; --header: #fff; }
 </style>
 </head>
 <body>
@@ -496,39 +494,31 @@
   <section class="page-hero">
     <div class="wrap" style="padding-bottom:30px">
       <p class="eyebrow">Achievements</p>
-      <h1>Sweet success</h1>
-      <div class="stats-grid" style="margin-top:36px">
-        <div class="stat"><b style="color:#fff">80+</b><span style="color:#fff">outlets</span></div>
-        <div class="stat"><b style="color:#fff">4</b><span style="color:#fff">states</span></div>
-        <div class="stat"><b style="color:#fff">206K</b><span style="color:#fff">Instagram family</span></div>
-        <div class="stat"><b style="color:#fff">12+</b><span style="color:#fff">awards</span></div>
-      </div>
+      <h1>Award-winning<br>desserts</h1>
+      <p>Honoured at India's biggest food and business events.</p>
     </div>
     <svg class="curve" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C 360 0, 1080 70, 1440 10 L1440 70 Z" fill="#fff"/></svg>
   </section>
   <section>
     <div class="wrap">
-      <p class="eyebrow">Awards</p><h2 style="margin-bottom:30px">Recognised for taste</h2>
+      <article class="award-feature reveal">
+        <div class="ph" data-label="Award moment · on stage with the trophy"></div>
+        <div>
+          <span class="award-year">2025 · Featured</span>
+          <h2>Best Dessert Brand in Kerala</h2>
+          <p class="award-event">Event name · City</p>
+          <p>One or two lines on what this award recognises and who gave it.</p>
+        </div>
+      </article>
       <div class="awards">
-        <div class="award reveal"><div class="ph" data-label="Award photo"></div><h3>Best Dessert Brand in Kerala</h3><p>2025 · Awarding body (from Instagram)</p></div>
-        <div class="award reveal"><div class="ph" data-label="Award photo"></div><h3>Award name</h3><p>Year · Given by</p></div>
-        <div class="award reveal"><div class="ph" data-label="Award photo"></div><h3>Award name</h3><p>Year · Given by</p></div>
+        <article class="award reveal"><div class="ph" data-label="Trophy photo"></div><span class="award-year">2025</span><h3>Award name</h3><p>Event name · Organiser</p></article>
+        <article class="award reveal"><div class="ph" data-label="Certificate"></div><span class="award-year">2025</span><h3>Award name</h3><p>Event name · Organiser</p></article>
+        <article class="award reveal"><div class="ph" data-label="Trophy photo"></div><span class="award-year">2024</span><h3>Award name</h3><p>Event name · Organiser</p></article>
+        <article class="award reveal"><div class="ph" data-label="Stage photo"></div><span class="award-year">2024</span><h3>Award name</h3><p>Event name · Organiser</p></article>
+        <article class="award reveal"><div class="ph" data-label="Trophy photo"></div><span class="award-year">2024</span><h3>Award name</h3><p>Event name · Organiser</p></article>
+        <article class="award reveal"><div class="ph" data-label="Certificate"></div><span class="award-year">2023</span><h3>Award name</h3><p>Event name · Organiser</p></article>
       </div>
-    </div>
-  </section>
-  <section style="background:var(--sky-soft)">
-    <div class="wrap">
-      <p class="eyebrow">Milestones</p><h2 style="margin-bottom:30px">How we grew</h2>
-      <div class="milestones reveal">
-        <div><b>2023</b>First outlet, Kerala</div><div><b>Year</b>First Bangalore outlet</div><div><b>Year</b>Hyderabad opens</div>
-        <div><b>Year</b>Mumbai opens</div><div><b>50th</b>outlet</div><div><b>80th</b>outlet</div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">Press &amp; media</p><h2 style="margin-bottom:30px">In the news</h2>
-      <div class="brands"><div>Media logo</div><div>Media logo</div><div>Media logo</div><div>Media logo</div></div>
+      <p class="award-note">Award list from the client: award name, event, organiser, year and a photo of each.</p>
     </div>
   </section>
 </div>
@@ -747,20 +737,5 @@ function observeReveal() { document.querySelectorAll(".show .reveal:not(.in)").f
 route();
 </script>
 
-<div class="theme-pick" role="group" aria-label="Colour palette"><span>Colours</span>
-  <button data-t="brand"><i style="background:linear-gradient(135deg,#00A2E5 50%,#fff 50%)"></i><b>Brand blue</b></button>
-  <button data-t="cream"><i style="background:linear-gradient(135deg,#00A2E5 50%,#FBEAD3 50%)"></i><b>Cream &amp; blue</b></button>
-  <button data-t="navy"><i style="background:linear-gradient(135deg,#0B2F57 50%,#00A2E5 50%)"></i><b>Deep navy</b></button>
-</div>
-<script>
-// palette switcher — remembered in this browser, shared by both options
-(function () {
-  const btns = document.querySelectorAll(".theme-pick button");
-  const apply = t => { document.documentElement.dataset.theme = t; btns.forEach(b => b.classList.toggle("on", b.dataset.t === t)); try { localStorage.setItem("sl-theme", t); } catch (e) {} };
-  let saved = "brand"; try { saved = localStorage.getItem("sl-theme") || "brand"; } catch (e) {}
-  btns.forEach(b => b.onclick = () => apply(b.dataset.t));
-  apply(saved);
-})();
-</script>
 </body>
 </html>
